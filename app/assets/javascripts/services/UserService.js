@@ -6,6 +6,12 @@ App.factory('UserService',
 
       var currentUser = function() {
         return Auth.currentUser()
+              .then(_addName);
+      };
+
+      var _addName = function(user) {
+        user.name = `${user.first_name} ${user.last_name}`;
+        return user;
       };
 
       return {

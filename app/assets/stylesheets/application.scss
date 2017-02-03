@@ -1,3 +1,15 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/*
+  > modules
+    - #flash-messages
+*/
+
+/* modules */
+#flash-messages {
+  position: fixed;
+  top: 65px;
+  left: 50px;
+}
