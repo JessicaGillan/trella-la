@@ -13,6 +13,11 @@ App.config(
             controller: 'DashboardCtrl',
             templateUrl: 'templates/dashboard/show.html'
           }
+        },
+        resolve: {
+          currentUser: function(UserService) {
+            return UserService.currentUser();
+          }
         }
       });
 

@@ -1,10 +1,12 @@
 
 App.controller('DashboardCtrl',
-  ['$scope',
+  ['$scope', 'currentUser',
 
     function($scope) {
 
-      $scope.view = 'DashboardCtrl#show'
+      $scope.view = 'DashboardCtrl#show';
+
+      $scope.currentUser = currentUser;
 
     }
 
