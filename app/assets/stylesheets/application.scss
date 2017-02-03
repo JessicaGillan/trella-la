@@ -3,9 +3,16 @@
 @import "bootstrap";
 
 /*
+  > layout
+    - body
   > modules
     - #flash-messages
 */
+
+// fix vertical alignment due to flash position
+body {
+  padding-top: 70px;
+}
 
 /* modules */
 #flash-messages {
