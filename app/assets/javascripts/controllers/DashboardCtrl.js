@@ -4,9 +4,11 @@ App.controller('DashboardCtrl',
 
     function($scope, currentUser) {
 
-      $scope.view = 'DashboardCtrl#show';
-
       $scope.currentUser = currentUser;
+
+      $scope.boards = currentUser.getBoards();
+
+      $scope.board = $scope.boards[0];
 
     }
 

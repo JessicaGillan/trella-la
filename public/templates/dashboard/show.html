@@ -1,16 +1,22 @@
 
 <div class="row" id="sub-header">
-  <div class="col-xs-12">
-    <h2 class="pull-left">Board Title Goes Here</h2>
 
-    <div class="pull-right">
+  <div class="col-xs-12 flex-vert-center flex-space-out">
+
+    <h2 ng-if="board">Board Title Goes Here</h2>
+
+    <h2 ng-if="!board">Create a Board ~></h2>
+
+    <div>
       <select>
-        <option>ng-repeat options here</option>
+        <option>-- Select Board --</option>
       </select>
-      <div class="">
+      <div>
+        <a ng-click="createBlankBoard()" href="#">New Board</a> |
         <a href="#">Delete Board</a>
-        <a href="#">New Board</a>
       </div>
     </div>
+
   </div>
+
 </div>
