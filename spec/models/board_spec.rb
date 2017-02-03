@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Board do
+
   describe '#lists' do
     it 'can be used to create and access a boards lists' do
       board = create(:board)
@@ -21,9 +22,10 @@ describe Board do
 
   describe '#members' do
     it 'can be used to access a boards members' do
-      board = create(:board, :with_two_members)
+      board = create(:board_with_members, members_count: 2)
 
       expect(board.members.length).to eq 2
     end
   end
+
 end

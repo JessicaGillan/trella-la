@@ -12,15 +12,40 @@ FactoryGirl.define do
     name    'Board'
     association :owner, factory: :user
 
-    trait :with_two_members do
-      members = Array.new(2) { user }
+    factory :board_with_members do
+
+      transient do
+        members_count 0
+      end
+
+      after(:create) do |board, evaluator|
+        create_list(:boards_user, evaluator.members_count, board: board)
+      end
+
     end
+  end
+
+  factory :boards_user do
+    board
+    user
   end
 
   factory :list do
     name          'List'
     description   'I\'ve got the best lists'
     board
+
+    factory :list_with_cards do
+
+      transient do
+        card_count 0
+      end
+
+      after(:create) do |list, evaluator|
+        create_list(:card, evaluator.card_count, list: list)
+      end
+
+    end
   end
 
   factory :card do

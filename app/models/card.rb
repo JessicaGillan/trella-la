@@ -5,3 +5,4 @@ class Card < ApplicationRecord
   has_many :users, through: :cards_users
   has_many :activities
 end
+
