@@ -5,7 +5,7 @@ App.factory('UserService',
     function(Auth) {
 
       var currentUser = function() {
-        return Auth.currentUser();
+        return Auth.currentUser()
       };
 
       return {

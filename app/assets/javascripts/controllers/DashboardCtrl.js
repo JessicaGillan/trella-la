@@ -2,7 +2,7 @@
 App.controller('DashboardCtrl',
   ['$scope', 'currentUser',
 
-    function($scope) {
+    function($scope, currentUser) {
 
       $scope.view = 'DashboardCtrl#show';
 

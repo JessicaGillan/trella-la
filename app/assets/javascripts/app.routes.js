@@ -15,13 +15,12 @@ App.config(
           }
         },
         resolve: {
-          currentUser: function(UserService) {
+          currentUser: ['UserService', function(UserService) {
             return UserService.currentUser();
-          }
+          }]
         }
       });
 
     }
 
 ]);
-
