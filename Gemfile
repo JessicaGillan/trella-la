@@ -27,6 +27,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-devise'
 end
 
+gem 'faker'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
