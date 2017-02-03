@@ -11,5 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
+//= require angular
+//= require ui-router
+//= require lodash
+//= require restangular
+//= require angular-devise
 //= require_tree .
