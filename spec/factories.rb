@@ -54,6 +54,35 @@ FactoryGirl.define do
     position    1
     completed   Time.now
     list
+
+    factory :card_with_members do
+
+      transient do
+        members_count 0
+      end
+
+      after(:create) do |card, evaluator|
+        create_list(:cards_user, evaluator.members_count, card: card)
+      end
+
+    end
+
+    factory :card_with_activities do
+
+      transient do
+        activity_count 0
+      end
+
+      after(:create) do |card, evaluator|
+        create_list(:activity, evaluator.activity_count, card: card)
+      end
+
+    end
+  end
+
+  factory :cards_user do
+    card
+    user
   end
 
   factory :activity do
