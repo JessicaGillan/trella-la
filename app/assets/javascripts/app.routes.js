@@ -12,6 +12,10 @@ App.config(
           '@': {
             controller: 'DashboardCtrl',
             templateUrl: 'templates/dashboard/show.html'
+          },
+          'navBar@': {
+            controller: 'DashboardCtrl',
+            templateUrl: 'templates/shared/navBar.html'
           }
         },
         resolve: {
