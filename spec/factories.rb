@@ -11,6 +11,10 @@ FactoryGirl.define do
   factory :board do
     name    'Board'
     association :owner, factory: :user
+
+    trait :with_two_members do
+      members = Array.new(2) { user }
+    end
   end
 
   factory :list do
