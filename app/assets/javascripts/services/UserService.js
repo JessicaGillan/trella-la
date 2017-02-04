@@ -11,16 +11,11 @@ App.factory('UserService',
 
       var _extendUser = function(user) {
         _addName(user);
-        _addBoards(user);
         return user;
       };
 
       var _addName = function(user) {
         user.name = `${user.first_name} ${user.last_name}`;
-      };
-
-      var _addBoards = function(user) {
-        user.boards = BoardService.getBoards(user.id);
       };
 
       return {

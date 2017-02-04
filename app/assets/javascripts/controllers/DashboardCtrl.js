@@ -1,15 +1,13 @@
 
 App.controller('DashboardCtrl',
-  ['$scope', 'currentUser',
+  ['$scope', 'currentUser', 'BoardService',
 
-    function($scope, currentUser) {
+    function($scope, currentUser, BoardService) {
 
       $scope.currentUser = currentUser;
 
-      $scope.boards = currentUser.getBoards();
-
+      $scope.boards = BoardService.getBoards();
       $scope.board = $scope.boards[0];
-
     }
 
 ]);

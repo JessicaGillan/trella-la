@@ -24,4 +24,17 @@ def create_user n
   })
 end
 
+def generate_example_user
+  u = User.create({
+        first_name: 'Example',
+        last_name:  'User',
+        email: "user@example.com",
+        password: 'password'
+      })
+
+  u.owned_boards.create(title: 'First owned board')
+  u.boards.create(title: 'I\'m a member board!')
+end
+
 generate_users(10)
+generate_example_user

@@ -4,9 +4,8 @@ App.factory('BoardService',
 
     function(Restangular) {
 
-      var getBoards = function(userId) {
-        // TODO get boards for given user?
-        Restangular.all('boards').getList();
+      var getBoards = function() {
+        return Restangular.all('boards').getList();
       };
 
       return {
