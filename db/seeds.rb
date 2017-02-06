@@ -31,10 +31,48 @@ def generate_example_user
         email: "user@example.com",
         password: 'password'
       })
-
-  u.owned_boards.create(title: 'First owned board')
-  u.boards.create(title: 'I\'m a member board!')
 end
 
+def generate_boards_on_example_u n
+  u = User.find_by_email('user@example.com')
+  n.times do |i|
+    u.boards.create({
+      name: Faker::StarWars.planet
+    })
+  end
+
+  n.times do
+    u.owned_boards.create({
+      name: Faker::Hipster.word
+    })
+  end
+end
+
+def generate_lists_on_example_u n
+  u = User.find_by_email('user@example.com')
+  boards = u.boards + u.owned_boards
+
+  boards.each do |board|
+    n.times do
+      l = board.lists.create({
+            name: Faker::Hipster.word,
+            description: Faker::Hipster.paragraph
+          })
+      l.cards.create({
+        position: 1,
+        title: Faker::StarWars.character,
+        description: Faker::Hipster.paragraph
+      })
+    end
+  end
+end
+
+puts "Generating Users"
 generate_users(10)
 generate_example_user
+
+puts "Generating boards"
+generate_boards_on_example_u 2
+
+puts "Generating lists"
+generate_lists_on_example_u 2

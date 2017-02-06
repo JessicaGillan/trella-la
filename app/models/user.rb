@@ -9,5 +9,4 @@ class User < ApplicationRecord
   has_many :boards, through: :boards_users
   has_many :cards_users
   has_many :cards, through: :cards_users
-
 end

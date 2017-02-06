@@ -3,22 +3,21 @@
 
   <div class="col-xs-12 flex-vert-center flex-space-out">
 
-    <h2 ng-if="board">Board Title Goes Here</h2>
+    <h2 ng-if="board">{{ board.name | uppercase }}</h2>
 
-    <h2 ng-if="!board">Create a Board ~></h2>
+    <h2 ng-if="!board">Select a Board or Create a New One -></h2>
 
     <div>
-      <select>
-        <option>-- Select Board --</option>
+      <select ng-model="board_id" ng-change="setBoard()">
+        <option selected="selected" value="">-- Select Board --</option>
+        <option ng-repeat="board in boards" value="{{ board.id }}">{{ board.name }}</option>
       </select>
       <div>
         <a ng-click="createBlankBoard()" href="#">New Board</a> |
-        <a href="#">Delete Board</a>
+        <a ng-click="deleteBoard()" href="#" ng-disabled="!board">Delete Board</a>
       </div>
     </div>
 
   </div>
 
 </div>
-
-Board: {{ boards }}
