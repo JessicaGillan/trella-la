@@ -35,11 +35,6 @@ end
 
 def generate_boards_on_example_u n
   u = User.find_by_email('user@example.com')
-  n.times do |i|
-    u.boards.create({
-      name: Faker::StarWars.planet
-    })
-  end
 
   n.times do
     u.owned_boards.create({
@@ -72,7 +67,7 @@ generate_users(10)
 generate_example_user
 
 puts "Generating boards"
-generate_boards_on_example_u 2
+generate_boards_on_example_u 4
 
 puts "Generating lists"
 generate_lists_on_example_u 2

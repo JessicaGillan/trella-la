@@ -36,6 +36,15 @@ App.factory('BoardService',
         )
       }
 
+      var updateBoard = function updateBoard(board) {
+        return board.put()
+                .then(function(board){
+                  return board
+                }, function(response) {
+                  console.error("Error!" + response);
+                })
+      };
+
       // PRIVATE
 
       var _createBoard = function _createBoard(params) {
@@ -59,7 +68,8 @@ App.factory('BoardService',
         getBoards: getBoards,
         findById: findById,
         create: create,
-        delete: deleteBoard
+        delete: deleteBoard,
+        update: updateBoard
       };
 
     }

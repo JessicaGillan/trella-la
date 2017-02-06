@@ -11,6 +11,7 @@
 
 // fix vertical alignment due to flash position
 body {
+  color: teal;
   padding-top: 70px;
 }
 
@@ -24,9 +25,19 @@ body {
   justify-content: space-between;
 }
 
+.margin-top {
+  margin-top: 20px;
+}
+
 /* modules */
 #flash-messages {
   position: fixed;
   top: 65px;
   left: 50px;
+}
+
+// Clickable Board Name
+#board-name {
+  height: 70px;
+  cursor: pointer;
 }

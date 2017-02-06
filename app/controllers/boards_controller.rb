@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
 
   def index
-    @boards = current_user.boards # TODO: create method to return owned and member boards
+    @boards = current_user.owned_boards # TODO: create method to return owned and member boards
 
     respond_to do |format|
       format.json { render json: @boards }
@@ -9,7 +9,8 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = current_user.boards.create(board_params)
+    @board = current_user.owned_boards.create(board_params)
+    @board.save
 
     respond_to do |format|
       format.json { render json: @board }
@@ -25,25 +26,25 @@ class BoardsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render json: @board.to_json(include: :user) }
+        format.json { render json: @board.to_json(include: :owner) }
       end
     end
 
   end
 
-  # def update
-  #   @pin = Pin.find_by(id: params[:id])
-  #
-  #   if @pin.update(pin_params)
-  #     respond_to do |format|
-  #       format.json { render json: @pin.to_json(include: :user) }
-  #     end
-  #   else
-  #     respond_to do |format|
-  #       format.json { render json: @pin }
-  #     end
-  #   end
-  # end
+  def update
+    @board = Board.find_by(id: params[:id])
+
+    if @board.update(board_params)
+      respond_to do |format|
+        format.json { render json: @board.to_json(include: :owner) }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: @board }
+      end
+    end
+  end
 
   private
 
