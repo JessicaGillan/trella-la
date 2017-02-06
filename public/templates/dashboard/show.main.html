@@ -1,0 +1,13 @@
+<div class="row" id="main">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="text-center clearfix"><a ng-click="createBlankList(); $event.preventDefault();" href="#">Add A List</a></p>
+      </div>
+    </div>
+
+    <div class="row" id="list-container">
+        <list ng-repeat="list in lists" list="list" delete="deleteList(list)"></list>
+    </div>
+  </div>
+</div>

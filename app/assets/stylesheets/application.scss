@@ -29,6 +29,10 @@ body {
   margin-top: 20px;
 }
 
+.pointable {
+  cursor: pointer;
+}
+
 /* modules */
 #flash-messages {
   position: fixed;
@@ -39,5 +43,16 @@ body {
 // Clickable Board Name
 #board-name {
   height: 70px;
-  cursor: pointer;
+}
+
+// List Panels
+#list-container {
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.list {
+  display: inline-block;
+  width: 100%;
+  margin: 15px 0;
 }

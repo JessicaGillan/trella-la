@@ -4,7 +4,7 @@
   <div class="col-xs-12 flex-vert-center flex-space-out">
     <h2 ng-if="!board">Select a Board or Create a New One -></h2>
 
-    <div id="board-name" ng-if="board">
+    <div id="board-name" class="pointable" ng-if="board">
       <h2 ng-hide="editingBoard" ng-click="toggleEdit()">{{ board.name | uppercase }}</h2>
 
       <div class="margin-top">

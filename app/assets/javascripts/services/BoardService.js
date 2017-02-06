@@ -4,6 +4,7 @@ App.factory('BoardService',
 
     function(Restangular, _) {
       var _boards = Restangular.all('boards').getList().$object;
+      var _current_board;
 
       var getBoards = function() {
         return _boards;
@@ -45,6 +46,14 @@ App.factory('BoardService',
                 })
       };
 
+      var getBoard = function getBoard(id) {
+        return Restangular.one('boards', id).get()
+                .then(function (board) {
+                  _current_board = board;
+                  return board
+                });
+      };
+
       // PRIVATE
 
       var _createBoard = function _createBoard(params) {
@@ -69,7 +78,8 @@ App.factory('BoardService',
         findById: findById,
         create: create,
         delete: deleteBoard,
-        update: updateBoard
+        update: updateBoard,
+        get: getBoard
       };
 
     }

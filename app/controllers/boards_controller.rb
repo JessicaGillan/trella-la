@@ -8,12 +8,34 @@ class BoardsController < ApplicationController
     end
   end
 
+  def show
+    @board = Board.find_by(id: params[:id])
+
+    respond_to do |format|
+      format.json { render json: @board.to_json(include: :lists) }
+    end
+  end
+
   def create
     @board = current_user.owned_boards.create(board_params)
     @board.save
 
     respond_to do |format|
       format.json { render json: @board }
+    end
+  end
+
+  def update
+    @board = Board.find_by(id: params[:id])
+
+    if @board.update(board_params)
+      respond_to do |format|
+        format.json { render json: @board.to_json(include: :owner) }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: @board }
+      end
     end
   end
 
@@ -30,20 +52,6 @@ class BoardsController < ApplicationController
       end
     end
 
-  end
-
-  def update
-    @board = Board.find_by(id: params[:id])
-
-    if @board.update(board_params)
-      respond_to do |format|
-        format.json { render json: @board.to_json(include: :owner) }
-      end
-    else
-      respond_to do |format|
-        format.json { render json: @board }
-      end
-    end
   end
 
   private
