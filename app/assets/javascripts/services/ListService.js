@@ -1,13 +1,29 @@
 
 App.factory('ListService', ['Restangular', '_',
   function(Restangular, _) {
-    var _lists = {};
+    var _lists = [];
     var _board;
 
-    var resetLists = function resetLists(lists) {
-      _lists = lists;
+    var setCards = function setCards(lists) {
+      for (var i = 0; i < lists.length; i++) {
+        _setCards(lists[i])
+          .then( function(list) {
+            _lists.push(list);
+          });
+      }
+
+      return _lists
     }
-    
+
+    var _setCards = function _setCards(list) {
+      return list.get()
+              .then(function(list) {
+                list.cards = Restangular.restangularizeCollection(list, list.cards, 'cards');
+
+                return list
+              })
+    }
+
     var getByBoard = function getByBoard(id) {
       _board = Restangular.one('boards', id).get().$object
 
@@ -57,7 +73,6 @@ App.factory('ListService', ['Restangular', '_',
     // PRIVATE
 
     var _createList = function _createList(board, params) {
-      console.log(board.all)
       var newList = {
         list: {
           name: params ? params.name : "Click to Edit Name",
@@ -81,7 +96,7 @@ App.factory('ListService', ['Restangular', '_',
       create: createOnBoard,
       deleteList: deleteList,
       update: updateList,
-      setLists: resetLists
+      setCards: setCards,
     };
   }
 ]);

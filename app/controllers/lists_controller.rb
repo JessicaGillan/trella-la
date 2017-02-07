@@ -9,6 +9,14 @@ class ListsController < ApplicationController
     end
   end
 
+  def show
+    @list = List.find_by(id: params[:id])
+
+    respond_to do |format|
+      format.json { render json: @list.to_json(include: :cards) }
+    end
+  end
+
   def create
     @list = @board.lists.create(list_params)
 

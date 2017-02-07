@@ -50,7 +50,7 @@ App.factory('BoardService',
         return Restangular.one('boards', id).get()
                 .then(function (board) {
                   board.lists = Restangular.restangularizeCollection(board, board.lists, 'lists');
-                  ListService.setLists(board.lists);
+                  board.lists = ListService.setCards(board.lists);
                   _current_board = board;
                   return board
                 });

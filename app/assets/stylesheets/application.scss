@@ -17,6 +17,7 @@ body {
 
 ol {
   list-style-type: none;
+  padding-left: 0;
 }
 
 .flex-vert-center {
@@ -82,6 +83,7 @@ ol {
 .card {
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 5px;
+  padding: 10px;
   background-color: #eee;
+  margin-top: 10px;
 }

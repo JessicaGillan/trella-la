@@ -1,7 +1,7 @@
 
 App.controller('ShowCtrl',
-  ['$scope', '$state', '$stateParams', 'currentUser', 'BoardService', 'ListService',
-  function($scope, $state, $stateParams, currentUser, BoardService, ListService) {
+  ['$scope', '$state', '$stateParams', 'currentUser', 'BoardService', 'ListService', 'CardService',
+  function($scope, $state, $stateParams, currentUser, BoardService, ListService, CardService) {
     $('#cardModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
       var card = button.data('card'); // Extract info from data-* attributes
@@ -35,6 +35,12 @@ App.controller('ShowCtrl',
 
         ListService.update(params.item)
       }
+    }
+
+    $scope.createBlankCard = function(params) {
+      console.log("creating card")
+      console.log(params.list)
+      CardService.create(params.list);
     }
   }
 ]);

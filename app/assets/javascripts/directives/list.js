@@ -4,7 +4,8 @@ App.directive('list', function() {
     scope: {
       list: '=',
       deleteCB: '=delete',
-      updateCB: '=update'
+      updateCB: '=update',
+      createCard: '=createCard'
     },
     templateUrl: '/templates/directives/list.html',
   };
