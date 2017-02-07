@@ -1,45 +1,38 @@
 
 
-App.factory('CardService', ['Restangular', '_',
-  function(Restangular, _) {
+App.factory('CardService', ['Restangular', '_', 'ListService',
+  function(Restangular, _, ListService) {
 
     var createOnList = function createOnList(list, params) {
       return _createCard(list, params);
     }
 
-    // var deleteList = function deleteList(list) {
-    //   return list.remove().then(
-    //     function(list) {
-    //       for (var i = 0; i < _lists.length; i++) {
-    //         if(_lists[i].id === list.id) {
-    //           _lists.splice(i, 1);
-    //           break;
-    //         }
-    //       }
-    //       return list;
-    //     },
-    //     function(response) {
-    //       console.error("Error!" + response);
-    //     }
-    //   )
-    // }
-    //
-    // var updateList = function updateList(list) {
-    //   return list.put()
-    //           .then(function(list){
-    //             return list
-    //           }, function(response) {
-    //             console.error("Error!" + response);
-    //           })
-    // };
+    var update = function update(card) {
+      var card_params = {
+        "card": {
+          title: card.title,
+          description: card.description,
+          position: card.position,
+          completed: card.completed
+        }
+      }
+      return Restangular.one('cards', card.id).customPUT(card_params)
+              .then(function(card){
+                // Update List?
+                console.log("response",card)
+                return card
+              }, function(response) {
+                console.error("Error!" + response);
+              })
+    };
 
     // PRIVATE
 
     var _createCard = function _createList(list, params) {
       var newCard = {
         card: {
-          title: params ? params.title : "Click to Edit Title",
-          description: params ? params.description : "Click to Edit description"
+          title: params ? params.title : "Title Goes Here",
+          description: params ? params.description : "-- No Description --"
         }
       };
 
@@ -47,7 +40,7 @@ App.factory('CardService', ['Restangular', '_',
               .all('cards')
               .post(newCard)
               .then( function(card) {
-                // _cards.unshift(card);
+                ListService.update(list);
 
                 return card
               });
@@ -55,6 +48,7 @@ App.factory('CardService', ['Restangular', '_',
 
     return {
       create: createOnList,
+      update: update
     };
   }
 ]);

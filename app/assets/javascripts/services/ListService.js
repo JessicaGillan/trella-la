@@ -15,15 +15,6 @@ App.factory('ListService', ['Restangular', '_',
       return _lists
     }
 
-    var _setCards = function _setCards(list) {
-      return list.get()
-              .then(function(list) {
-                list.cards = Restangular.restangularizeCollection(list, list.cards, 'cards');
-
-                return list
-              })
-    }
-
     var getByBoard = function getByBoard(id) {
       _board = Restangular.one('boards', id).get().$object
 
@@ -64,9 +55,24 @@ App.factory('ListService', ['Restangular', '_',
     var updateList = function updateList(list) {
       return list.put()
               .then(function(list){
+                // Update _lists to match
+                for (var i = 0; i < _lists.length; i++) {
+                  if(_lists[i].id === list.id) {
+                    _lists[i] = list;
+                  }
+                }
+
                 return list
               }, function(response) {
                 console.error("Error!" + response);
+              })
+    };
+
+    var updateById = function updateById(id) {
+      return Restangular.one('lists', id).get()
+              .then(function(list){
+                // Update _lists to match
+                updateList(list)
               })
     };
 
@@ -90,6 +96,15 @@ App.factory('ListService', ['Restangular', '_',
               });
     }
 
+    var _setCards = function _setCards(list) {
+      return list.get()
+              .then(function(list) {
+                list.cards = Restangular.restangularizeCollection(list, list.cards, 'cards');
+
+                return list
+              })
+    }
+
     return {
       get: getByBoard,
       getLists: getLists,
@@ -97,6 +112,7 @@ App.factory('ListService', ['Restangular', '_',
       deleteList: deleteList,
       update: updateList,
       setCards: setCards,
+      updateById: updateById
     };
   }
 ]);

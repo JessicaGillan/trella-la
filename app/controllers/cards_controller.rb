@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_list
+  before_action :set_list, only: [:index, :create]
 
   def index
     @cards = @list.cards.order(position: :asc)

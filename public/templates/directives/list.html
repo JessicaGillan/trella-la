@@ -18,11 +18,11 @@
      <hr>
      <ol>
        <li ng-repeat="card in list.cards">
-         <div class="card">
-           <p><a data-toggle="modal" data-target="#cardModal"
-                 data-card="{{ card }}" class="pointable">{{ card.title }}</a></p>
-           <p>{{ card.description }}</p>
-         </div>
+         <card card="card"
+               delete="deleteCard"
+               update="updateCard"
+               create-activity="createActivity"
+               ></card>
        </li>
      </ol>
      <p class="text-center clearfix"><a ng-click="createCard({list: list}); $event.preventDefault();" href="#">Add A Card</a></p>

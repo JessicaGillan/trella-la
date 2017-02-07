@@ -11,6 +11,12 @@ Rails.application.routes.draw do
           resources :cards
         end
       end
+
+      resources :cards
+      
+      resources :lists do
+        resources :cards
+      end
     end
   end
 
