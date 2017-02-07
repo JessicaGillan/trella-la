@@ -46,6 +46,12 @@ ol {
   border-bottom-right-radius: 0;
 }
 
+.name {
+  text-transform: uppercase;
+  font-size: 26px;
+  line-height: 1.5;
+}
+
 /* modules */
 #flash-messages {
   position: fixed;

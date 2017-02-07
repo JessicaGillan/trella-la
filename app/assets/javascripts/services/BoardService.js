@@ -1,8 +1,8 @@
 
 App.factory('BoardService',
-  ['Restangular', '_',
+  ['Restangular', '_', 'ListService',
 
-    function(Restangular, _) {
+    function(Restangular, _, ListService) {
       var _boards = Restangular.all('boards').getList().$object;
       var _current_board;
 
@@ -50,6 +50,7 @@ App.factory('BoardService',
         return Restangular.one('boards', id).get()
                 .then(function (board) {
                   board.lists = Restangular.restangularizeCollection(board, board.lists, 'lists');
+                  ListService.setLists(board.lists);
                   _current_board = board;
                   return board
                 });

@@ -3,13 +3,18 @@
     <div class="panel-body">
       <div id="list-name" class="pointable">
         <editable item="list" uppercase="{{ true }}"
-                  property="{{ 'name' }}" input-type="{{ 'text' }}"
-                  process="updateCB">
+          property="{{ 'name' }}" input-type="{{ 'text' }}"
+          process="updateCB">
         </editable>
       </div>
      <a ng-click="deleteCB({list: list}); $event.preventDefault();" class="pointable">Delete List</a>
      <hr>
-     <p><i>{{ list.description }}</i></p>
+     <p><i>
+       <editable item="list" uppercase="{{ false }}"
+                 property="{{ 'description' }}" input-type="{{ 'text' }}"
+                 process="updateCB">
+       </editable>
+     </i></p>
      <hr>
      <ol>
        <li ng-repeat="card in list.cards">

@@ -22,7 +22,7 @@ App.controller('ShowCtrl',
       })
 
     $scope.createBlankList = function () {
-      ListService.create()
+      ListService.create($scope.board)
     }
 
     $scope.deleteList = function (params) {
@@ -30,15 +30,10 @@ App.controller('ShowCtrl',
     }
 
     $scope.updateList = function(params) {
-      console.log(params.valid)
-      console.log(params.item)
-      console.log(params.data)
-      console.log(params.property)
+      if (params.valid) {
+        params.item[params.property] = params.data;
 
-      if (valid) {
-        list[property] = newVal;
-
-        ListService.update(list)
+        ListService.update(params.item)
       }
     }
   }

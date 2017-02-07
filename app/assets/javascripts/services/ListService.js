@@ -4,6 +4,10 @@ App.factory('ListService', ['Restangular', '_',
     var _lists = {};
     var _board;
 
+    var resetLists = function resetLists(lists) {
+      _lists = lists;
+    }
+    
     var getByBoard = function getByBoard(id) {
       _board = Restangular.one('boards', id).get().$object
 
@@ -20,8 +24,8 @@ App.factory('ListService', ['Restangular', '_',
       return _lists;
     }
 
-    var createOnBoard = function createOnBoard(params) {
-      return _createList(_board.id, params);
+    var createOnBoard = function createOnBoard(board, params) {
+      return _createList(board, params);
     }
 
     var deleteList = function deleteList(list) {
@@ -52,7 +56,8 @@ App.factory('ListService', ['Restangular', '_',
 
     // PRIVATE
 
-    var _createList = function _createList(board_id, params) {
+    var _createList = function _createList(board, params) {
+      console.log(board.all)
       var newList = {
         list: {
           name: params ? params.name : "Click to Edit Name",
@@ -60,8 +65,7 @@ App.factory('ListService', ['Restangular', '_',
         }
       };
 
-      return Restangular
-              .one('boards', board_id)
+      return board
               .all('lists')
               .post(newList)
               .then( function(list) {
@@ -76,7 +80,8 @@ App.factory('ListService', ['Restangular', '_',
       getLists: getLists,
       create: createOnBoard,
       deleteList: deleteList,
-      update: updateList
+      update: updateList,
+      setLists: resetLists
     };
   }
 ]);
