@@ -12,7 +12,7 @@ App.controller('IndexCtrl', ['$scope', '$state', 'currentUser', 'BoardService',
       if($scope.board) {
         $state.go('dashboard.show', { id: $scope.board.id });
       } else {
-        $state.go('dashboard.index');    
+        $state.go('dashboard.index');
       }
     }
 
@@ -20,6 +20,7 @@ App.controller('IndexCtrl', ['$scope', '$state', 'currentUser', 'BoardService',
       BoardService.create({ name: "Click to Edit Title" })
         .then( function (board) {
           $scope.board = board;
+          $state.go('dashboard.show', { id: $scope.board.id });
         });
     }
 
