@@ -6,7 +6,15 @@
      <hr>
      <p><i>{{ list.description }}</i></p>
      <hr>
-     cards....
+     <ol>
+       <li ng-repeat="card in list.cards">
+         <div class="card">
+           <p><a data-toggle="modal" data-target="#cardModal"
+                 data-card="{{ card }}" class="pointable">{{ card.title }}</a></p>
+           <p>{{ card.description }}</p>
+         </div>
+       </li>
+     </ol>
     </div>
   </div>
 </div>

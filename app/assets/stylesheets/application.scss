@@ -15,6 +15,10 @@ body {
   padding-top: 70px;
 }
 
+ol {
+  list-style-type: none;
+}
+
 .flex-vert-center {
   display: flex;
   align-items: center;
@@ -57,4 +61,11 @@ body {
   display: inline-block;
   width: 100%;
   margin: 15px 0;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #eee;
 }
