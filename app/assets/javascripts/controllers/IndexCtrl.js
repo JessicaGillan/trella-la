@@ -8,7 +8,12 @@ App.controller('IndexCtrl', ['$scope', '$state', 'currentUser', 'BoardService',
 
     $scope.setBoard = function() {
       $scope.board = BoardService.findById($scope.board_id);
-      $state.go('dashboard.show', { id: $scope.board.id });
+
+      if($scope.board) {
+        $state.go('dashboard.show', { id: $scope.board.id });
+      } else {
+        $state.go('dashboard.index');    
+      }
     }
 
     $scope.createBlankBoard = function () {
