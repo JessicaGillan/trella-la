@@ -3,7 +3,8 @@ App.directive('list', function() {
     restrict: 'E',
     scope: {
       list: '=',
-      delete: '&'
+      deleteCB: '=delete',
+      updateCB: '=update'
     },
     templateUrl: '/templates/directives/list.html',
   };

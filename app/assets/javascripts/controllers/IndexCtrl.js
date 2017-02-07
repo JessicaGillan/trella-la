@@ -24,9 +24,9 @@ App.controller('IndexCtrl', ['$scope', '$state', 'currentUser', 'BoardService',
       }
     }
 
-    $scope.updateBoard = function(valid, newName) {
-      if (valid) {
-        $scope.board.name = newName;
+    $scope.updateBoard = function(params) {
+      if (params.valid) {
+        $scope.board.name = params.data;
 
         BoardService.update($scope.board)
       }

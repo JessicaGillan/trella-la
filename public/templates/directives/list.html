@@ -1,8 +1,13 @@
 
   <div class="panel panel-default list">
     <div class="panel-body">
-     <h5>{{ list.name | uppercase }}</h5>
-     <a ng-click="delete({list: list}); $event.preventDefault();" class="pointable">Delete List</a>
+      <div id="list-name" class="pointable">
+        <editable item="list" uppercase="{{ true }}"
+                  property="{{ 'name' }}" input-type="{{ 'text' }}"
+                  process="updateCB">
+        </editable>
+      </div>
+     <a ng-click="deleteCB({list: list}); $event.preventDefault();" class="pointable">Delete List</a>
      <hr>
      <p><i>{{ list.description }}</i></p>
      <hr>

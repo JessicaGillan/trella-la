@@ -14,10 +14,10 @@ App.directive('editable', function() {
   }
 
   var submitHandler = function(scope) {
-    return function(valid, data) {
+    return function(valid, data, property, item) {
       if(valid) {
         scope.editing = false;
-        scope.processForm(valid, data);
+        scope.processForm(valid, data, property, item);
       }
     }
   }
@@ -29,7 +29,7 @@ App.directive('editable', function() {
       property: '@',
       uppercase: '@',
       inputType: '@',
-      processForm: '&',
+      processForm: '=process',
     },
     templateUrl: '/templates/directives/editable.html',
     link: function(scope, element, attrs) {

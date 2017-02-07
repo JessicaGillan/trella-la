@@ -41,6 +41,15 @@ App.factory('ListService', ['Restangular', '_',
       )
     }
 
+    var updateList = function updateList(list) {
+      return list.put()
+              .then(function(list){
+                return list
+              }, function(response) {
+                console.error("Error!" + response);
+              })
+    };
+
     // PRIVATE
 
     var _createList = function _createList(board_id, params) {
@@ -66,7 +75,8 @@ App.factory('ListService', ['Restangular', '_',
       get: getByBoard,
       getLists: getLists,
       create: createOnBoard,
-      deleteList: deleteList
+      deleteList: deleteList,
+      update: updateList
     };
   }
 ]);

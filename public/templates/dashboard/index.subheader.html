@@ -7,7 +7,7 @@
     <div id="board-name" class="pointable" ng-if="board">
       <editable item="board" uppercase="{{ true }}"
                 property="{{ 'name' }}" input-type="{{ 'text' }}"
-                process-form="updateBoard(valid, data)">
+                process="updateBoard">
       </editable>
     </div>
 

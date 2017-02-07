@@ -32,5 +32,18 @@ App.controller('ShowCtrl',
     $scope.deleteList = function (list) {
       ListService.deleteList(list)
     }
+
+    $scope.updateList = function(params) {
+      console.log(params.valid)
+      console.log(params.item)
+      console.log(params.data)
+      console.log(params.property)
+
+      if (valid) {
+        list[property] = newVal;
+
+        ListService.update(list)
+      }
+    }
   }
 ]);
