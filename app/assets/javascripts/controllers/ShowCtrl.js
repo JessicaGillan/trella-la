@@ -18,19 +18,15 @@ App.controller('ShowCtrl',
     BoardService.get($stateParams.id)
       .then( function (board) { return $scope.board = board })
       .then( function(board) {
-        ListService.get(board.id)
-          .then( function() {
-            $scope.lists = ListService.getLists();
-          }
-        )
+          $scope.lists = board.lists;
       })
 
     $scope.createBlankList = function () {
       ListService.create()
     }
 
-    $scope.deleteList = function (list) {
-      ListService.deleteList(list)
+    $scope.deleteList = function (params) {
+      ListService.deleteList(params.list)
     }
 
     $scope.updateList = function(params) {

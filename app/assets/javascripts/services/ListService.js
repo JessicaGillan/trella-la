@@ -12,7 +12,7 @@ App.factory('ListService', ['Restangular', '_',
               .all('lists')
               .getList()
               .then( function(lists) {
-                _lists = lists;
+                _lists = lists; // Restangularize collection
               });
     }
 

@@ -49,6 +49,7 @@ App.factory('BoardService',
       var getBoard = function getBoard(id) {
         return Restangular.one('boards', id).get()
                 .then(function (board) {
+                  board.lists = Restangular.restangularizeCollection(board, board.lists, 'lists');
                   _current_board = board;
                   return board
                 });
