@@ -5,8 +5,6 @@ App.controller('IndexCtrl', ['$scope', '$state', 'currentUser', 'BoardService',
     $scope.currentUser = currentUser;
 
     $scope.boards = BoardService.getBoards();
-    $scope.editingBoard = false;
-    $scope.formData = {};
 
     $scope.setBoard = function() {
       $scope.board = BoardService.findById($scope.board_id);
@@ -26,19 +24,9 @@ App.controller('IndexCtrl', ['$scope', '$state', 'currentUser', 'BoardService',
       }
     }
 
-    $scope.toggleEdit = function () {
-      if($scope.editingBoard) {
-        $scope.editingBoard = false;
-      } else {
-        $scope.formData.name = $scope.board.name;
-        $scope.editingBoard = true;
-      }
-    }
-
-    $scope.updateBoard = function(valid) {
+    $scope.updateBoard = function(valid, newName) {
       if (valid) {
-        $scope.board.name = $scope.formData.name;
-        $scope.editingBoard = false;
+        $scope.board.name = newName;
 
         BoardService.update($scope.board)
       }

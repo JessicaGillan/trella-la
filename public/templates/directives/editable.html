@@ -1,0 +1,9 @@
+<h2 ng-hide="editing" ng-click="toggleEdit(value)">{{ uppercase ? (item[property] | uppercase) : item[property] }}</h2>
+<div class="margin-top">
+  <form class="form form-inline" ng-show="editing" name="formProperty"
+  ng-submit="submitHandler({ valid: formProperty.$valid, data: formData.property})">
+  <input type="{{ inputType }}" ng-model="formData.property" class="form-control straight-r-edge pull-left">
+  <input type="submit" name="submit" value="✓" class="btn btn-success straight-l-edge pull-left">
+</form>
+
+<a ng-show="editing" ng-click="toggleEdit(); $event.preventDefault();" href="#">Cancel</a>

@@ -37,6 +37,15 @@ ol {
   cursor: pointer;
 }
 
+.straight-l-edge {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.straight-r-edge {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 /* modules */
 #flash-messages {
   position: fixed;
@@ -61,7 +70,7 @@ ol {
   flex-shrink: 0;
   margin-right: 15px;
   padding: 0;
-  width: 400px; 
+  width: 400px;
 }
 
 .card {

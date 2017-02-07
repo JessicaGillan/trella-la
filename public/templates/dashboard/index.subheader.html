@@ -5,17 +5,10 @@
     <h2 ng-if="!board">Select a Board or Create a New One -></h2>
 
     <div id="board-name" class="pointable" ng-if="board">
-      <h2 ng-hide="editingBoard" ng-click="toggleEdit()">{{ board.name | uppercase }}</h2>
-
-      <div class="margin-top">
-        <form ng-show="editingBoard" name="boardName"
-        ng-submit="updateBoard(boardName.$valid)">
-        <input type="text" ng-model="formData.name">
-        <input type="submit" name="submit" value="" style="width:0; height:0; border:none; color:white; background-color:white;">
-      </form>
-
-      <a ng-show="editingBoard" ng-click="toggleEdit()" href="#">Cancel</a>
-      </div>
+      <editable item="board" uppercase="{{ true }}"
+                property="{{ 'name' }}" input-type="{{ 'text' }}"
+                process-form="updateBoard(valid, data)">
+      </editable>
     </div>
 
     <div>
