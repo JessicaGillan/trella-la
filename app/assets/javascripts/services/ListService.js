@@ -4,7 +4,9 @@ App.factory('ListService', ['Restangular', '_',
     var _lists = [];
     var _board;
 
-    var setCards = function setCards(lists) {
+    var resetLists = function resetLists(lists) {
+      angular.copy({}, _lists); // Reset _lists
+      
       for (var i = 0; i < lists.length; i++) {
         _setCards(lists[i])
           .then( function(list) {
@@ -111,7 +113,7 @@ App.factory('ListService', ['Restangular', '_',
       create: createOnBoard,
       deleteList: deleteList,
       update: updateList,
-      setCards: setCards,
+      resetLists: resetLists,
       updateById: updateById
     };
   }
