@@ -18,7 +18,7 @@ App.controller('ShowCtrl',
     BoardService.get($stateParams.id)
       .then( function (board) { return $scope.board = board })
       .then( function(board) {
-        ListService.get(board.id);
+        ListService.get(board.id)
           .then( function() {
             $scope.lists = ListService.getLists();
           }
