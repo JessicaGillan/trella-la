@@ -6,8 +6,12 @@
       </div>
     </div>
 
-    <div class="row" id="list-container">
-        <list ng-repeat="list in lists" list="list" delete="deleteList(list)"></list>
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="list-container">
+          <list ng-repeat="list in lists" list="list" delete="deleteList(list)"></list>
+        </div>
+      </div>
     </div>
   </div>
 </div>
